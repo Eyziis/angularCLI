@@ -1,0 +1,44 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0px 5px 5px rgba(0,0,0, 0.25);
+  height: 64px;
+  align-items: center;
+}
+
+ul,li{
+  display:flex;
+  list-style-type:none;
+  justify-content: center;
+  gap: 25px;
+}
+li{
+  cursor: pointer;
+
+}
+li:hover{
+  color:#218484;
+  text-decoration: underline;
+}
+.header div{
+  margin: 10px;
+}
+
+a{
+  color:black;
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.menu{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+ .disconnect{
+   display:none;
+ }
+}
