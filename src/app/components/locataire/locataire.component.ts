@@ -12,6 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class LocataireComponent implements OnInit {
 
   locataires: Locataire[] = [];
+  loc: Locataire = new Locataire();
 
   constructor(private locataireService: LocataireService, activatedRoute: ActivatedRoute) {
     let locatairesObservable: Observable<Locataire[]>;
@@ -23,6 +24,7 @@ export class LocataireComponent implements OnInit {
 
       locatairesObservable.subscribe((serverLocataires) => {
         this.locataires = serverLocataires;
+        this.loc = serverLocataires[0];
       })
     })
 
@@ -32,4 +34,11 @@ export class LocataireComponent implements OnInit {
 
   }
 
+  test(params: any) {
+    this.locataireService.getById(params).subscribe((serverLocataire2)=>
+    {
+      this.loc = serverLocataire2[0];
+      console.log(this.loc)
+    });
+  }
 }

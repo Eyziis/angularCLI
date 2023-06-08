@@ -1,0 +1,168 @@
+html {
+  height: 100%;
+}
+
+.content {
+  margin: 15px;
+}
+
+.table {
+  display: flex;
+  flex-direction: row;
+  max-height: 350px;
+  overflow: hidden;
+}
+
+.table p {
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  border: 1px solid grey;
+  align-content: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.list {
+  display: flex;
+  width: 80%;
+  margin-left: 10px;
+  align-items: stretch;
+  border: 1px solid grey;
+  overflow: auto;
+}
+
+input[type=radio] + label {
+  margin-left: 10px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  height: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid grey !important;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+tbody {
+  border: none !important;
+}
+
+.onglet {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  min-height: 25px;
+  align-content: center;
+
+}
+
+.onglet > a {
+  color: black;
+  text-decoration: none;
+  border: 1px solid grey;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+div.onglet a:target {
+  background-color: grey !important;
+}
+
+.ongletContent {
+
+  width: 100%;
+
+
+}
+
+div.OngletContent div. {
+  display: none;
+  height: 0;
+}
+
+div.OngletContent div:target {
+  display: flex
+}
+
+div.OngletContent div:not(:target) {
+  display: none;
+  height: 0;
+}
+
+
+.sgn {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-direction: column;
+  border: 1px solid grey;
+}
+
+
+.ongletContent.div {
+  width: 33%;
+
+}
+
+.containerInfo {
+  border: 1px solid lightgrey;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.containerInfoTop {
+
+}
+
+.containerInfoMiddle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerInfoMiddle form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.containerInfoMiddle form input{
+  width: 25%;
+}
+
+.containerInfoBot {
+  display: flex;
+  gap: 10px;
+  flex-direction: row-reverse;
+  padding-top: 15px;
+}
+.searchForm{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.selected{
+  background-color: lightgreen !important;
+}

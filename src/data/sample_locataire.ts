@@ -5,7 +5,7 @@ export const sample_locataire: Locataire[] =
     {
       "id": 1,
       "logement_id": 1,
-      "nom": "Reinhold Harber PhD",
+      "nom": "Reinhold Harber PhD2",
       "email": "torphy.ralph@example.org",
       "age": 53,
       "date_e": "2005-03-05",
@@ -113,7 +113,7 @@ export const sample_locataire: Locataire[] =
     {
       "id": 10,
       "logement_id": 10,
-      "nom": "Dewitt Kihn",
+      "nom": "Dewitt Kihn sd",
       "email": "lueilwitz.cynthia@example.com",
       "age": 37,
       "date_e": "1978-09-25",

@@ -16,6 +16,7 @@ export class LocataireService {
     return this.http.get<Locataire[]>(LOCATAIRES_URL);
   }
   getById(id:BigInteger): Observable<Locataire[]> {
-    return this.http.get<Locataire[]>(LOCATAIRES_URL);
+    console.log(LOCATAIRES_URL+"/"+id)
+    return this.http.get<Locataire[]>(LOCATAIRES_URL+"/"+id);
   }
 }

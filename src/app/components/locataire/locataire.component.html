@@ -1,6 +1,94 @@
 
-<ul>
-  <li *ngFor="let locataire of locataires">
-    {{locataire.nom}}
-  </li>
-</ul>
+
+<div class="content">
+  <div class="table">
+    <div class="search">
+      <form id="formSearch" class="searchForm" method="GET" data-action="">
+        <p>Recherche</p>
+        <input id="nomSearch" type="text" name="nom" placeholder="Nom">
+        <label for="locataire-type">Type de locataire</label>
+
+        <select name="loc" id="locataire-type">
+          <option value="Tous">Tous</option>
+          <option value="Parti">Parti</option>
+        </select>
+
+        <fieldset>
+
+          <div>
+            <input type="radio" id="commencePar" value="commencePar" name="typeRecherche"
+                   checked>
+            <label for="CommencePar">Commence par</label>
+          </div>
+
+          <div>
+            <input type="radio" id="Contient" name="typeRecherche" value="Contient">
+            <label for="Contient">Contient</label>
+          </div>
+
+        </fieldset>
+
+        <button type="submit">Rechercher</button>
+      </form>
+
+    </div>
+    <div class="list">
+      <table id="listLocataire">
+        <tr>
+          <th>N° Locataire</th>
+          <th>Nom</th>
+          <th>Age</th>
+          <th>Date d'entrée</th>
+          <th>Date de sortie</th>
+          <th>Adresse</th>
+          <th>Référence logiciel précedent</th>
+        </tr>
+
+        <tr id="ligneLoc" *ngFor="let locataire of locataires" (click)="test(locataire.id)" >
+          <td>{{locataire.id}}</td>
+          <td>{{locataire.nom}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="containerInfo">
+    <div class="containerInfoTop">
+      <h2>Informations locataire</h2>
+    </div>
+    <div class="containerInfoMiddle">
+      <form action="" method="POST">
+        ID:
+        <input id="id_loc" type="text" name="id" value="{{loc.id}}" readonly>
+        Nom:
+        <input id="nom_loc" type="text" name="nom" value="{{loc.nom}}" readonly>
+        Age:
+        <input id="age_loc" type="number" name="age" value="" readonly>
+        Date d'entrée:
+        <input id="date_e_loc" type="date" name="date_e" value="" readonly>
+        Adresse
+        <input id="adresse_loc" type="text" name="adresse"
+               value=""
+               readonly>
+        <div class="containerInfoBot">
+
+          <button id="valider" type="submit" name="action" value="save" style="display:none;">
+            Enregistrer
+          </button>
+          <button id="annuler" type="submit" style="display:none;">Annuler</button>
+          <button id="nouveau" type="button">Nouveau</button>
+          <button id="modifier" type="button">Modifier</button>
+          <button id="supprimer" type="submit" name="action" value="delete">Supprimer</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
