@@ -1,5 +1,3 @@
-
-
 <div class="content">
   <div class="table">
     <div class="search">
@@ -39,20 +37,15 @@
           <th>Nom</th>
           <th>Age</th>
           <th>Date d'entrée</th>
-          <th>Date de sortie</th>
-          <th>Adresse</th>
-          <th>Référence logiciel précedent</th>
+          <th>Email</th>
         </tr>
 
-        <tr id="ligneLoc" *ngFor="let locataire of locataires" (click)="test(locataire.id)" >
+        <tr id="ligneLoc" *ngFor="let locataire of locataires" (click)="get(locataire.id)">
           <td>{{locataire.id}}</td>
           <td>{{locataire.nom}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-          <td></td>
-          <td></td>
+          <td>{{locataire.age}}</td>
+          <td>{{formatDate(locataire.date_e,'dd/MM/YYYY','fr')}}</td>
+          <td>{{locataire.email}}</td>
         </tr>
 
       </table>
@@ -64,28 +57,29 @@
       <h2>Informations locataire</h2>
     </div>
     <div class="containerInfoMiddle">
-      <form action="" method="POST">
-        ID:
-        <input id="id_loc" type="text" name="id" value="{{loc.id}}" readonly>
+      <form [formGroup]="locataireForm">
+        <input id="id_loc" type="text" name="nom" formControlName="id" hidden  >
         Nom:
-        <input id="nom_loc" type="text" name="nom" value="{{loc.nom}}" readonly>
+        <input id="nom_loc" type="text" name="nom" formControlName="nom"  >
+        Email:
+        <input id="email_loc" type="email" name="email" formControlName="email"
+               >
         Age:
-        <input id="age_loc" type="number" name="age" value="" readonly>
+        <input id="age_loc" type="number" name="age" formControlName="age"  >
         Date d'entrée:
-        <input id="date_e_loc" type="date" name="date_e" value="" readonly>
-        Adresse
-        <input id="adresse_loc" type="text" name="adresse"
-               value=""
-               readonly>
+        <input id="date_e_loc" type="date" name="date_e" formControlName="date_e"
+               >
+
         <div class="containerInfoBot">
 
           <button id="valider" type="submit" name="action" value="save" style="display:none;">
             Enregistrer
           </button>
           <button id="annuler" type="submit" style="display:none;">Annuler</button>
-          <button id="nouveau" type="button">Nouveau</button>
-          <button id="modifier" type="button">Modifier</button>
-          <button id="supprimer" type="submit" name="action" value="delete">Supprimer</button>
+          <button id="nouveau" type="button" (click)="videForm()">Nouveau</button>
+          <button id="nouveau" type="button" (click)="create()">Enregistrer</button>
+          <button id="modifier" type="button" (click)="update(this.loc.id)">Modifier</button>
+          <button id="supprimer" type="submit" name="action" value="delete" (click)="delete(this.loc.id)">Supprimer</button>
         </div>
       </form>
     </div>

@@ -1,12 +1,9 @@
 export class Locataire {
-  id!:BigInteger;
-  logement_id?:bigint;
+  id?:string;
   nom!:string;
   email!:string;
-  age!:number;
-  date_e!:Date;
-  date_s!:Date;
-  reference_prec?:string;
-  created_at!:Date;
-  updated_at!:Date;
+  age!: number;
+  date_e?:string;
+  createdAt?:Date;
+  updatedAt?:Date;
 }
