@@ -55,6 +55,7 @@ td, th {
   text-align: left;
   padding: 8px;
   border: 1px solid grey !important;
+  cursor:pointer;
 }
 
 tr:nth-child(even) {
@@ -161,8 +162,10 @@ div.OngletContent div:not(:target) {
 .searchForm{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 .selected{
   background-color: lightgreen !important;
 }
+
+

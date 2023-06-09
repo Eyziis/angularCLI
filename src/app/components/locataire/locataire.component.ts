@@ -13,6 +13,13 @@ import {formatDate} from "@angular/common";
 })
 export class LocataireComponent implements OnInit {
   protected readonly formatDate = formatDate;
+  mode:String = "C"
+
+  searchForm = new FormGroup({
+    typeRecherche: new FormControl<string>('commencePar',{nonNullable:true}),
+    nom: new FormControl<string>('', {nonNullable:true})
+  })
+
   locataireForm = new FormGroup({
     id: new FormControl<string>('',{nonNullable:true}),
     nom: new FormControl<string>('',{nonNullable:true}),
@@ -37,7 +44,8 @@ export class LocataireComponent implements OnInit {
   all(){
     this.locataireService.all().subscribe((serverLocataire2)=>
     {
-      this.locataires = serverLocataire2;
+      console.log(serverLocataire2)
+      this.locataires = serverLocataire2.body;
       this.loc = this.locataires[0];
       this.locataireForm.setValue({
         id: this.loc.id,
@@ -49,7 +57,7 @@ export class LocataireComponent implements OnInit {
     });
   }
 
-  get(id: String) {
+  get(id: string) {
     this.locataireService.get(id).subscribe((serverLocataire2)=>
     {
       console.log(serverLocataire2)
@@ -68,6 +76,7 @@ export class LocataireComponent implements OnInit {
     this.locataireService.delete(id).subscribe((serverLocataire)=>
     {
       var index = this.locataires.findIndex(x => x.id===id) ;
+      console.log(index);
       this.locataires.splice(index,1)
 
       if(this.locataires.length>0){
@@ -100,7 +109,6 @@ export class LocataireComponent implements OnInit {
 
     this.locataireService.create(this.loc).subscribe((serverLocataire)=>
     {
-      console.log();
       this.loc.id = serverLocataire.id;
       this.locataires.push(this.loc);
       alert('Locataire crée');
@@ -114,6 +122,22 @@ export class LocataireComponent implements OnInit {
       age: null,
       email: '',
       date_e: ''
+    })
+  }
+
+  search(){
+
+    this.locataireService.search(this.searchForm.value.nom, this.searchForm.value.typeRecherche).subscribe((result)=>{
+      console.log(result.body)
+      this.locataires = result.body;
+      this.loc = this.locataires[0];
+      this.locataireForm.setValue({
+        id: this.loc.id,
+        nom: this.loc.nom,
+        age: this.loc.age,
+        email: this.loc.email,
+        date_e: formatDate(this.loc.date_e,'yyyy-MM-dd','fr')
+      })
     })
   }
 }

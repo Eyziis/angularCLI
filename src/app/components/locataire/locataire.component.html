@@ -1,32 +1,25 @@
 <div class="content">
   <div class="table">
     <div class="search">
-      <form id="formSearch" class="searchForm" method="GET" data-action="">
+      <form class="searchForm" [formGroup]="searchForm">
         <p>Recherche</p>
-        <input id="nomSearch" type="text" name="nom" placeholder="Nom">
-        <label for="locataire-type">Type de locataire</label>
-
-        <select name="loc" id="locataire-type">
-          <option value="Tous">Tous</option>
-          <option value="Parti">Parti</option>
-        </select>
-
+        <input formControlName="nom" id="nomSearch" type="text" name="nom" placeholder="Nom">
         <fieldset>
-
           <div>
-            <input type="radio" id="commencePar" value="commencePar" name="typeRecherche"
+            <input formControlName="typeRecherche" type="radio" id="commencePar" value="commencePar"
+                   name="typeRecherche"
                    checked>
             <label for="CommencePar">Commence par</label>
           </div>
 
           <div>
-            <input type="radio" id="Contient" name="typeRecherche" value="Contient">
+            <input formControlName="typeRecherche" type="radio" id="Contient" name="typeRecherche" value="Contient">
             <label for="Contient">Contient</label>
           </div>
 
         </fieldset>
 
-        <button type="submit">Rechercher</button>
+        <button type="submit" (click)="search()">Rechercher</button>
       </form>
 
     </div>
@@ -40,11 +33,12 @@
           <th>Email</th>
         </tr>
 
-        <tr id="ligneLoc" *ngFor="let locataire of locataires" (click)="get(locataire.id)">
+        <tr class="{{locataire.id == this.loc.id ? 'selected' : ''}}" id="ligneLoc"
+            *ngFor="let locataire of locataires; let i=index" (click)="get(locataire.id)">
           <td>{{locataire.id}}</td>
           <td>{{locataire.nom}}</td>
           <td>{{locataire.age}}</td>
-          <td>{{formatDate(locataire.date_e,'dd/MM/YYYY','fr')}}</td>
+          <td>{{formatDate(locataire.date_e, 'dd/MM/YYYY', 'fr')}}</td>
           <td>{{locataire.email}}</td>
         </tr>
 
@@ -58,28 +52,29 @@
     </div>
     <div class="containerInfoMiddle">
       <form [formGroup]="locataireForm">
-        <input id="id_loc" type="text" name="nom" formControlName="id" hidden  >
+        <input id="id_loc" type="text" name="nom" formControlName="id" hidden>
         Nom:
-        <input id="nom_loc" type="text" name="nom" formControlName="nom"  >
+        <input id="nom_loc" type="text" name="nom" formControlName="nom">
         Email:
         <input id="email_loc" type="email" name="email" formControlName="email"
-               >
+        >
         Age:
-        <input id="age_loc" type="number" name="age" formControlName="age"  >
+        <input id="age_loc" type="number" name="age" formControlName="age">
         Date d'entrée:
         <input id="date_e_loc" type="date" name="date_e" formControlName="date_e"
-               >
+        >
 
         <div class="containerInfoBot">
 
           <button id="valider" type="submit" name="action" value="save" style="display:none;">
             Enregistrer
           </button>
-          <button id="annuler" type="submit" style="display:none;">Annuler</button>
+          <button id="annuler" type="submit" (click)="get(this.loc.id)">Annuler</button>
           <button id="nouveau" type="button" (click)="videForm()">Nouveau</button>
           <button id="nouveau" type="button" (click)="create()">Enregistrer</button>
           <button id="modifier" type="button" (click)="update(this.loc.id)">Modifier</button>
-          <button id="supprimer" type="submit" name="action" value="delete" (click)="delete(this.loc.id)">Supprimer</button>
+          <button id="supprimer" type="submit" name="action" value="delete" (click)="delete(this.loc.id)">Supprimer
+          </button>
         </div>
       </form>
     </div>
