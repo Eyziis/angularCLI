@@ -3,6 +3,7 @@ import {Locataire} from "../shared/models/locataire";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {LOCATAIRES_URL} from "../shared/constants/urls";
+import * as http from "http";
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,12 @@ export class LocataireService {
     return this.http.get<Locataire[]>(LOCATAIRES_URL);
   }
 
-  get(id: String): Observable<Locataire> {
-    console.log(LOCATAIRES_URL + "/" + id)
-    return this.http.get<Locataire>(LOCATAIRES_URL + "/" + id);
+  get(id: String): Observable<any> {
+    //return this.http.get<Locataire>(LOCATAIRES_URL + "/" + id);
+    return this.http.get(LOCATAIRES_URL + "/" + id,{observe: 'response'});
   }
 
-  update(id: String, locataire: Locataire): Observable<Locataire> {
+  update(id: String, locataire: Locataire): Observable<any> {
     return this.http.put<Locataire>(LOCATAIRES_URL, locataire);
   }
 

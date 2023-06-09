@@ -52,7 +52,8 @@ export class LocataireComponent implements OnInit {
   get(id: String) {
     this.locataireService.get(id).subscribe((serverLocataire2)=>
     {
-      this.loc = serverLocataire2[0];
+      console.log(serverLocataire2)
+      this.loc = serverLocataire2.body;
       this.locataireForm.setValue({
         id: this.loc.id,
         nom: this.loc.nom,
